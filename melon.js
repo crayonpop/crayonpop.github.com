@@ -1,4 +1,4 @@
-﻿// AI39si7q8IlUgI1ivCf9kYln2XQlKvSYeD190pCovmgC_fps-fZ3G6WxbeQBqDmpTtiqXxIwry-2c13ieIc2YYx6_CTAdxqWmg
+// AI39si7q8IlUgI1ivCf9kYln2XQlKvSYeD190pCovmgC_fps-fZ3G6WxbeQBqDmpTtiqXxIwry-2c13ieIc2YYx6_CTAdxqWmg
 
 
 var titleEl;
@@ -42,7 +42,7 @@ function melon_realTime_callback ( data ) {
         datas = data;
 
 
-        $targetNow.html("<h1>" + data.melon.rankDay +" / "+ data.melon.rankHour +":00" + "</h1><br><h2>멜론 실시간차트</h2>");
+        $targetNow.html("<h1>" + data.melon.rankDay +" / "+ data.melon.rankHour +":00" + "</h1><br>");
         
         for(var i = 0; i< data.melon.songs.song.length; i++)
         {
