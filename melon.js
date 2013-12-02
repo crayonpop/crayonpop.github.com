@@ -198,7 +198,7 @@ function numberCounter(target_frame, target_number) {
         this.target_frame.innerHTML = commaNum(this.count);
  
         if(this.count < this.target_count) {
-            this.timer = setTimeout(function() { self.counter(); }, 20);
+            this.timer = setTimeout(function() { self.counter(); }, 15);
         } else {
             clearTimeout(this.timer);
         }
