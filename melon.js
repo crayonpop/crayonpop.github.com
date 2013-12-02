@@ -117,7 +117,7 @@ function melon_todaySong_callback(data)
             if( allRank || (artistName == catch_artist))
             {
                 titleEl +=  "<tr align='center'>"
-                +"<td width=10%><img src='"+ getNumberIcon(i+1) +"' /></td>" 
+                +"<td width=10%><img src='"+ getNumberIcon(i+1) +"' alt='"+(i+1)+"위' /></td>" 
                 +"<td width=10%>" + "<img style='width: 100px; height: auto;' src='"+ imgLink +"' /></td>"
                 +"<td width=10%>" + rankSymbol(curRank,pastRank) + Math.abs(pastRank - curRank) + "</td>"             
                 +"<td width=70%>" + songName + "</td></tr>";
