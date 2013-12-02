@@ -3,10 +3,29 @@
 
 var titleEl;
 var datas;
+var datas2;
 var now;
 var allRank = false;
 var catch_artist = "크레용팝"
 
+
+ $.ajax({
+        url: "http://gdata.youtube.com/feeds/api/videos/qCPFK61Yu3M?v=2&alt=json",
+        dataType: "json",                         
+        success: function (data){
+            var viewcount = data.entry.yt$statistics.viewCount;
+            var stillShot = data.entry.media$group.media$thumbnail[1].url;
+            var mediaUrl  = data.entry.media$group.media$player.url;
+            var titleName = data.entry.title.$t
+
+            var urls = "<h1 id='count'></h1><br>"
+            urls += "<a href='"+mediaUrl+"'><img src='" +stillShot +"'/></a><br><br>";
+            
+            $("#titlename").html(titleName);
+            $("#mvcut").html(urls);
+            new numberCounter("count",viewcount);
+        }
+    });
 
 $(function () {
     PlanetX.init({
@@ -15,6 +34,9 @@ $(function () {
         scope: "",
         redirect_uri: "http://ellin.kd.io/"
     });
+
+   
+
 
     melon();
 });
@@ -42,7 +64,7 @@ function melon_realTime_callback ( data ) {
         datas = data;
 
 
-        $targetNow.html("<h1>" + data.melon.rankDay +" / "+ data.melon.rankHour +":00" + "</h1><br>");
+        $targetNow.html("<h1>" + data.melon.rankDay +"<p>-</p>"+ data.melon.rankHour +":00" + "</h1><br>");
         
         for(var i = 0; i< data.melon.songs.song.length; i++)
         {
@@ -142,3 +164,55 @@ function getNumberIcon(rankNo)
     return imgUrl ="http://image.melon.co.kr/resource/image/cds/common/web/templet/num"+ rankNo +".png"
 }
 
+function commaNum(num) {  
+        var len, point, str;  
+  
+        num = num + "";  
+        point = num.length % 3  
+        len = num.length;  
+  
+        str = num.substring(0, point);  
+        while (point < len) {  
+            if (str != "") str += ",";  
+            str += num.substring(point, point + 3);  
+            point += 3;  
+        }  
+        return str;  
+    }  
+
+function numberCounter(target_frame, target_number) {
+    this.count = 0; this.diff = 0;
+    this.target_count = parseInt(target_number);
+    this.target_frame = document.getElementById(target_frame);
+    this.timer = null;
+    this.counter();
+};
+    numberCounter.prototype.counter = function() {
+        var self = this;
+        this.diff = this.target_count - this.count;
+ 
+        if(this.diff > 0) {
+            self.count += Math.ceil(this.diff / 5);
+        }
+ 
+        this.target_frame.innerHTML = commaNum(this.count);
+ 
+        if(this.count < this.target_count) {
+            this.timer = setTimeout(function() { self.counter(); }, 20);
+        } else {
+            clearTimeout(this.timer);
+        }
+    };
+    numberCounter.prototype.formatNumber = function(num) {
+        num+= '';
+        x = num.split('.');
+        x1 = x[0];
+        x2 = x.length > 1 ? '.' + x[1] : '';
+        var rgx = /(d+)(d{3})/;
+        while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + ',' + '$2');
+        }
+        return x1 + x2;
+    };
+
+    
