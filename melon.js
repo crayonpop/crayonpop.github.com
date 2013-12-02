@@ -79,7 +79,7 @@ function melon_realTime_callback ( data ) {
             {
                 titleEl += 
                  "<tr align=center><td width=100%><b>" + songName + "</b></td></tr>"
-                +"<tr align=center><td width=100%><img src='"+ getNumberIcon(i+1) +"' />위 ("+rankSymbol(curRank,pastRank) + Math.abs(pastRank - curRank) +")</td></tr>" 
+                +"<tr align=center><td width=100%><img src='"+ getNumberIcon(i+1) +"' alt='"+(i+1)+"위' />위 ("+rankSymbol(curRank,pastRank) + Math.abs(pastRank - curRank) +")</td></tr>" 
                 +"</tr><tr align=center><td width=100%>" + "<img style='width: 250px; height: auto;' src='"+ imgLink +"' /></td></tr>"
                 // +"<tr align=center><td width=100%>" + rankSymbol(curRank,pastRank) + Math.abs(pastRank - curRank) + "</td></tr>"             
                 
