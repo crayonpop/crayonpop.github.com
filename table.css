@@ -91,3 +91,52 @@
 .tableBack tr:first-child td:last-child{
 	border-width:0px 0px 1px 1px;
 }
+
+
+
+.watch-view-count{
+font-size: 19px;
+line-height: 24px;
+color: #333;
+}
+.video-extras-sparkbars {
+height: 2px;
+overflow: hidden;
+}
+
+.video-extras-sparkbar-likes {
+float: left;
+height: 2px;
+background: #2793e6;
+}
+.video-extras-sparkbar-dislikes {
+float: left;
+height: 2px;
+background: #ccc;
+}
+
+#watch7-views-info {
+position: absolute;
+top: 0;
+right: 20px;
+min-width: 160px;
+max-width: 220px;
+color: #666;
+font-size: 11px;
+text-align: right;
+}
+
+.icon-watch-stats-like {
+top: -1px;
+background: no-repeat url(//s.ytimg.com/yts/imgbin/www-hitchhiker-vflrq9V4u.webp) 0 -1040px;
+background-size: auto;
+width: 13px;
+height: 14px;
+}
+
+.icon-watch-stats-dislike {
+background: no-repeat url(//s.ytimg.com/yts/imgbin/www-hitchhiker-vflrq9V4u.webp) -34px -184px;
+background-size: auto;
+width: 13px;
+height: 14px;
+}

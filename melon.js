@@ -1,10 +1,12 @@
+
+
 var titleEl;
 var datas;
 var datas2;
 var now;
 var nowCount;
 var allRank = false;
-var catch_artist = "크레용팝"
+var catch_artist = "크레용팝";
 
 $.ajax({
     url: "http://gdata.youtube.com/feeds/api/videos/qCPFK61Yu3M?v=2&alt=json",
@@ -16,7 +18,7 @@ $.ajax({
         var titleName = data.entry.title.$t;
 
 
-        var urls = "<h1 id='count'></h1><br>"
+        var urls = "<h1 id='count'></h1><br>";
         urls += "<a href='" + mediaUrl + "'><img src='" + stillShot +
             "'/></a><br><br>";
 
@@ -28,6 +30,8 @@ $.ajax({
 });
 
 $(function () {
+    NProgress.start();
+
     PlanetX.init({
         appkey: "c6e4b1a5-fec2-38ad-aed5-d9c67dd15f04",
         client_id: "345463c4-51b7-3c67-81fc-c1efaca7b586",
@@ -58,7 +62,7 @@ function melon_realTime_callback(data) {
         playList,
         symbol,
         melonData;
-
+    
     $targetEl = $("#songs");
     $targetNow = $("#now");
 
@@ -71,7 +75,7 @@ function melon_realTime_callback(data) {
 
     for (var i = 0; i < data.melon.songs.song.length; i++) {
         var artistName = melonData.song[i].artists.artist[0].artistName;
-        var songName = melonData.song[i].songName
+        var songName = melonData.song[i].songName;
         var curRank = melonData.song[i].currentRank;
         var pastRank = melonData.song[i].pastRank;
         var imgLink = getCoverImg(melonData.song[i].albumId);
@@ -85,12 +89,13 @@ function melon_realTime_callback(data) {
                 rankSymbol(curRank, pastRank) + Math.abs(pastRank - curRank) +
                 ")</td></tr>" + "</tr><tr align=center><td width=100%>" +
                 "<img style='width: 250px; height: auto;' src='" + imgLink +
-                "' /></td></tr>"
+                "' /></td></tr>";
 
 
         }
     }
     $targetEl.html(titleEl);
+    NProgress.done();    
 }
 
 function melon_todaySong_callback(data) {
@@ -103,7 +108,7 @@ function melon_todaySong_callback(data) {
 
     for (var i = 0; i < data.melon.songs.song.length; i++) {
         var artistName = melonData.song[i].artists.artist[0].artistName;
-        var songName = melonData.song[i].songName
+        var songName = melonData.song[i].songName;
         var curRank = melonData.song[i].currentRank;
         var pastRank = melonData.song[i].pastRank;
         var imgLink = getCoverImg(melonData.song[i].albumId);
@@ -119,7 +124,8 @@ function melon_todaySong_callback(data) {
                 songName + "</td></tr>";
         }
     }
-    $targetEl.html(titleEl);
+
+    $targetEl.html(titleEl);    
 }
 
 function rankSymbol(curRank, pastRank) {
@@ -127,11 +133,11 @@ function rankSymbol(curRank, pastRank) {
     var symbol;
 
     if (curRank < pastRank)
-        symbol = "<label style='color:red;'>▲</label>"
+        symbol = "<label style='color:red;'>▲</label>";
     else if (curRank == pastRank)
-        symbol = "= "
+        symbol = "= ";
     else
-        symbol = "▼"
+        symbol = "▼";
 
         return symbol;
 }
@@ -140,9 +146,9 @@ function getCoverImg(albumId) {
     // http://image.melon.co.kr/cm/album/images/022/02/410/2202410_500.jpg
     var f1,
         f2,
-        f3
+        f3,
         aId = "",
-        imgUrl = "http://image.melon.co.kr/cm/album/images/0"
+        imgUrl = "http://image.melon.co.kr/cm/album/images/0";
 
     aId = albumId.toString();
 
@@ -158,14 +164,14 @@ function getCoverImg(albumId) {
 function getNumberIcon(rankNo) {
     return imgUrl =
         "http://image.melon.co.kr/resource/image/cds/common/web/templet/num" +
-        rankNo + ".png"
+        rankNo + ".png";
 }
 
 function commaNum(num) {
     var len, point, str;
 
     num = num + "";
-    point = num.length % 3
+    point = num.length % 3;
     len = num.length;
 
     str = num.substring(0, point);
