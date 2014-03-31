@@ -1,4 +1,4 @@
-
+﻿
 
 var titleEl;
 var datas;
@@ -9,7 +9,7 @@ var allRank = false;
 var catch_artist = "크레용팝";
 
 $.ajax({
-    url: "http://gdata.youtube.com/feeds/api/videos/qCPFK61Yu3M?v=2&alt=json",
+    url: "http://gdata.youtube.com/feeds/api/videos/yyDG3BQRdDY?v=2&alt=json",
     dataType: "json",
     success: function (data) {
         var viewcount = nowCount = data.entry.yt$statistics.viewCount;
