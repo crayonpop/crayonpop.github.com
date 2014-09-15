@@ -6,7 +6,7 @@ var datas2;
 var now;
 var nowCount;
 var allRank = false;
-var catch_artist = "크레용팝";
+var catch_artist = "AOA";
 
 $.ajax({
     url: "http://gdata.youtube.com/feeds/api/videos/yyDG3BQRdDY?v=2&alt=json",
@@ -62,7 +62,7 @@ function melon_realTime_callback(data) {
         playList,
         symbol,
         melonData;
-    
+
     $targetEl = $("#songs");
     $targetNow = $("#now");
 
@@ -95,7 +95,7 @@ function melon_realTime_callback(data) {
         }
     }
     $targetEl.html(titleEl);
-    NProgress.done();    
+    NProgress.done();
 }
 
 function melon_todaySong_callback(data) {
@@ -125,7 +125,7 @@ function melon_todaySong_callback(data) {
         }
     }
 
-    $targetEl.html(titleEl);    
+    $targetEl.html(titleEl);
 }
 
 function rankSymbol(curRank, pastRank) {
