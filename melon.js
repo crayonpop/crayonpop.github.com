@@ -9,7 +9,7 @@ var allRank = false;
 var catch_artist = "AOA";
 
 $.ajax({
-    url: "http://gdata.youtube.com/feeds/api/videos/yyDG3BQRdDY?v=2&alt=json",
+    url: "http://gdata.youtube.com/feeds/api/videos/N5wzkQvzp4c?v=2&alt=json",
     dataType: "json",
     success: function (data) {
         var viewcount = nowCount = data.entry.yt$statistics.viewCount;
